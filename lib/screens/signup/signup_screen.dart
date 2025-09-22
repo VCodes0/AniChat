@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -58,7 +59,7 @@ class SignupScreen extends StatelessWidget {
                         controller: emailController,
                         hintText: 'username@gmail.com',
                         labelText: 'Email',
-                        prefixIcon: Icons.email,
+                        prefixIcon: CupertinoIcons.mail,
                       ),
 
                       SizedBox(height: mq.height * 0.025),
@@ -69,7 +70,7 @@ class SignupScreen extends StatelessWidget {
                         controller: passwordController,
                         hintText: 'Password@123',
                         labelText: 'Password',
-                        prefixIcon: Icons.lock,
+                        prefixIcon: CupertinoIcons.lock,
                       ),
 
                       SizedBox(height: mq.height * 0.04),
