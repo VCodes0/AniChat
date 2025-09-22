@@ -1,0 +1,39 @@
+name: anichat
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.9.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # For IOS Style Icons
+  cupertino_icons: ^1.0.8
+
+  # For StateManagement And Routing
+  get: ^4.7.2
+
+  # For Google Stylish Font's
+  google_fonts: ^6.3.1
+
+  # For Lottie Animations
+  lottie: ^3.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets in our application,
+  assets:
+    - assets/animation/
+    - assets/images/
