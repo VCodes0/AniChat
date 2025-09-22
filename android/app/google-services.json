@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "289497570479",
+    "project_id": "anichat-cd41c",
+    "storage_bucket": "anichat-cd41c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289497570479:android:317a08fd08905c8ec9485a",
+        "android_client_info": {
+          "package_name": "com.anichat.anichat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiGF-l6J8Vf_gnwyQnIwHlP763nh0DANA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
