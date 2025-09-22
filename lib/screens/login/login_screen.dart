@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../services/google_button.dart';
-import '../../widgets/costom_button.dart';
-import '../../widgets/costom_textfield.dart';
+import '../../widgets/custom_button.dart';
+import '../../widgets/custom_textfield.dart';
 import '../../widgets/divider.dart';
 import '../signup/signup_screen.dart';
 
