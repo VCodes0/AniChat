@@ -11,6 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+
   # For IOS Style Icons
   cupertino_icons: ^1.0.8
 
@@ -22,12 +23,27 @@ dependencies:
 
   # For Lottie Animations
   lottie: ^3.3.2
+
+  # For Firebase Integration
   firebase_core: ^4.1.0
+
+  # For Firebase Authentication
   firebase_auth: ^6.0.2
+
+  # For Changing App Icon
+  flutter_launcher_icons: ^0.14.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+# For App Icon Changing
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/logo.png"
+  min_sdk_android: 21
+  remove_alpha_ios: true
 
   flutter_lints: ^5.0.0
 

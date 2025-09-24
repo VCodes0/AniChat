@@ -42,7 +42,7 @@ class AniChat extends StatelessWidget {
         ),
       ),
 
-      // Dark Theme (can customize further if needed)
+      // Dark Theme
       darkTheme: ThemeData.dark().copyWith(
         textTheme: GoogleFonts.poppinsTextTheme(ThemeData.dark().textTheme),
       ),

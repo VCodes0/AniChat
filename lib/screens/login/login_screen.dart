@@ -1,3 +1,4 @@
+import '../../services/auth_services.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -71,12 +72,21 @@ class LoginScreen extends StatelessWidget {
                         hintText: 'Password@123',
                         labelText: 'Password',
                         prefixIcon: CupertinoIcons.lock,
+                        isPassword: true,
                       ),
 
                       SizedBox(height: mq.height * 0.04),
 
                       // Sign In Button
-                      CustomButton(text: 'Log in'),
+                      CustomButton(
+                        text: 'Log in',
+                        onTap: () async {
+                          await AuthServices.logIn(
+                            emailController.text,
+                            passwordController.text,
+                          );
+                        },
+                      ),
 
                       SizedBox(height: mq.height * 0.025),
 

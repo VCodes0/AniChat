@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../services/auth_services.dart';
 import '../../services/google_button.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_textfield.dart';
@@ -13,8 +14,8 @@ class SignupScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     final mq = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -71,12 +72,21 @@ class SignupScreen extends StatelessWidget {
                         hintText: 'Password@123',
                         labelText: 'Password',
                         prefixIcon: CupertinoIcons.lock,
+                        isPassword: true,
                       ),
 
                       SizedBox(height: mq.height * 0.04),
 
                       // Create Account Button
-                      CustomButton(text: 'Create Account'),
+                      CustomButton(
+                        text: 'Create Account',
+                        onTap: () async {
+                          await AuthServices.signUp(
+                            emailController.text,
+                            passwordController.text,
+                          );
+                        },
+                      ),
 
                       SizedBox(height: mq.height * 0.025),
 
