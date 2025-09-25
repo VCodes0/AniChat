@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../services/auth_services.dart';
-import '../../services/google_button.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_textfield.dart';
-import '../../widgets/divider.dart';
+import '../home/home_screen.dart';
 import '../login/login_screen.dart';
 
 class SignupScreen extends StatelessWidget {
@@ -81,24 +80,18 @@ class SignupScreen extends StatelessWidget {
                       CustomButton(
                         text: 'Create Account',
                         onTap: () async {
-                          await AuthServices.signUp(
+                          bool isSuccess = await AuthServices.signUp(
                             emailController.text,
                             passwordController.text,
                           );
+
+                          if (isSuccess) {
+                            Get.offAll(() => HomeScreen());
+                          }
                         },
                       ),
 
                       SizedBox(height: mq.height * 0.025),
-
-                      // Divider
-                      OrDivider(),
-
-                      SizedBox(height: mq.height * 0.025),
-
-                      // Google Sign In Button
-                      GoogleButton(),
-
-                      SizedBox(height: mq.height * 0.05),
 
                       // Already have account? Login
                       Row(

@@ -63,6 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '289497570479',
     projectId: 'anichat-cd41c',
     storageBucket: 'anichat-cd41c.firebasestorage.app',
+    androidClientId: '289497570479-l42j5t6uv5qaffn28guudqtnr06t6452.apps.googleusercontent.com',
+    iosClientId: '289497570479-amp0nkdkegr00tald398sillbck0thqj.apps.googleusercontent.com',
     iosBundleId: 'com.anichat.anichat',
   );
+
 }

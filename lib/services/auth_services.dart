@@ -1,9 +1,8 @@
-import 'dart:io';
-
-import 'package:anichat/screens/login/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../screens/login/login_screen.dart';
 
 class AuthServices {
   // Firebase Authentication instance
@@ -36,39 +35,36 @@ class AuthServices {
 
   // Password validation
   static bool isValidPassword(String password) {
-    return password.length >= 6;
+    return password.length >= 8;
   }
 
   // Log In
-  static Future<void> logIn(String email, String password) async {
+  static Future<bool> logIn(String email, String password) async {
     if (email.isEmpty || password.isEmpty) {
       showError("Login Failed", "Please fill in all required fields");
-      return;
+      return false;
     }
 
     if (!isValidEmail(email)) {
       showError("Invalid Email", "Please enter a valid email address");
-      return;
+      return false;
     }
 
+    Get.dialog(
+      Center(child: CircularProgressIndicator.adaptive()),
+      barrierDismissible: false,
+    );
+
     try {
-      UserCredential credential = await auth.signInWithEmailAndPassword(
+      await auth.signInWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
-
-      // Optionally check if email is verified
-      if (!credential.user!.emailVerified) {
-        showError(
-          "Email Not Verified",
-          "Please verify your email before logging in.",
-        );
-        await auth.signOut();
-        return;
-      }
-
+      Get.back();
       showSuccess("Login Successful", "Welcome back!");
+      return true;
     } on FirebaseAuthException catch (e) {
+      Get.back();
       String message = "";
 
       switch (e.code) {
@@ -89,46 +85,45 @@ class AuthServices {
       }
 
       showError("Login Error", message);
+      return false;
     } catch (e) {
       showError("Error", "Something went wrong. Please try again.");
+      return false;
     }
   }
 
   // Sign Up
-  static Future<void> signUp(String email, String password) async {
+  static Future<bool> signUp(String email, String password) async {
     if (email.isEmpty || password.isEmpty) {
       showError("Signup Failed", "Please fill in all required fields");
-      return;
+      return false;
     }
 
     if (!isValidEmail(email)) {
       showError("Invalid Email", "Please enter a valid email address");
-      return;
+      return false;
     }
 
     if (!isValidPassword(password)) {
-      showError("Weak Password", "Password must be at least 6 characters long");
-      return;
+      showError("Weak Password", "Password must be at least 8 characters long");
+      return false;
     }
 
+    Get.dialog(
+      Center(child: CircularProgressIndicator.adaptive()),
+      barrierDismissible: false,
+    );
+
     try {
-      UserCredential credential = await auth.createUserWithEmailAndPassword(
+      await auth.createUserWithEmailAndPassword(
         email: email.trim(),
         password: password.trim(),
       );
-
-      // Send email verification
-      await credential.user?.sendEmailVerification();
-
-      showSuccess(
-        "Account Created",
-        Platform.isAndroid || Platform.isIOS
-            ? "Check your inbox for a verification link."
-            : "Account created. Please verify your email.",
-      );
-
-      await auth.signOut();
+      Get.back;
+      showSuccess("Account Created Successful", "Welcome to AniChat!");
+      return true;
     } on FirebaseAuthException catch (e) {
+      Get.back();
       String message = "";
 
       switch (e.code) {
@@ -144,17 +139,19 @@ class AuthServices {
         default:
           message = "Signup failed. ${e.message}";
       }
-
       showError("Signup Error", message);
+      return false;
     } catch (e) {
+      Get.back();
       showError("Error", "Something went wrong. Please try again.");
+      return false;
     }
   }
 
   // Sign Out
-  static Future<void> signOut() async {
+  static Future<bool> signOut() async {
     Get.dialog(
-      Center(child: CircularProgressIndicator.adaptive()),
+      const Center(child: CircularProgressIndicator.adaptive()),
       barrierDismissible: false,
     );
 
@@ -162,20 +159,11 @@ class AuthServices {
       await auth.signOut();
       Get.back();
       Get.offAll(() => LoginScreen());
+      return true;
     } catch (e) {
       Get.back();
       showError("Sign Out Failed", e.toString());
+      return false;
     }
-  }
-
-  // Get Current User
-  static User? getCurrentUser() {
-    return auth.currentUser;
-  }
-
-  // Check if user is logged in and email verified
-  static bool isUserLoggedIn() {
-    final user = auth.currentUser;
-    return user != null && user.emailVerified;
   }
 }

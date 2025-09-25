@@ -12,7 +12,20 @@
           "package_name": "com.anichat.anichat"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "289497570479-l42j5t6uv5qaffn28guudqtnr06t6452.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anichat.anichat",
+            "certificate_hash": "faebcd54465eed759d14697817e578c689f5ff76"
+          }
+        },
+        {
+          "client_id": "289497570479-6samh3eheio4r6m8vs640pkp08btrer3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAiGF-l6J8Vf_gnwyQnIwHlP763nh0DANA"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "289497570479-6samh3eheio4r6m8vs640pkp08btrer3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "289497570479-amp0nkdkegr00tald398sillbck0thqj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.anichat.anichat"
+              }
+            }
+          ]
         }
       }
     }
