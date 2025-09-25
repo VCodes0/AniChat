@@ -34,6 +34,7 @@ dependencies:
 
   # For Changing App Icon
   flutter_launcher_icons: ^0.14.4
+  intl: ^0.20.2
 
 
 dev_dependencies:
